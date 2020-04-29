@@ -17,3 +17,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+$("document").ready(function(){
+    $("#stock-lookup-form").on("submit",function(){
+        $('#stock-lookup-form').on('ajax:complete', function(event, data, status){
+            $('#results').html(data.responseText)
+          })
+    })
+})
