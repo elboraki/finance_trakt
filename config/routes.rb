@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'my_portfolio', to: 'users#my_portfolio'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'search_stocks',to: "stocks#search"
-  resources :user_stocks,only:[:create]
+  get 'search_stocks', to: 'stocks#search'
+  resources :user_stocks, only: %i[create destroy]
 end
