@@ -51,4 +51,12 @@ class User < ApplicationRecord
     return nil unless to_send_back
     to_send_back
   end
+
+  def not_friends_with?(friend_id)
+    friendships.where(friend_id: friend_id).count < 1
+  end
+
+  def except_current_user(users)
+    users.reject { |user| user.id == id }
+  end
 end
