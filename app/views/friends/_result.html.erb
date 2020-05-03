@@ -2,7 +2,8 @@
      <%= render 'layouts/messages' %>
    <% end %>
    <% if @users %>
-  <div id="friend-lookup-results" class="well results-block col-md-10">
+   <% if @users.size > 0 %>
+  <div id="friend-lookup-results" class="well results-block col-md-12">
     <table class="search-results-table col-md-12">
       <tbody>
         <% @users.each do |user| %>
@@ -14,9 +15,9 @@
               <% if current_user.not_friends_with?(user.id) %>
                 <%= link_to "Add as my friend", 
                         add_friend_path(user: current_user, friend: user),
-                          class: "btn btn-xs btn-success", method: :post %>
+                          class: "btn btn-xs btn-primary", method: :post %>
               <% else %>
-                <span class="label label-primary">
+                <span class="badge badge-primary">
                   You are friends
                 </span>
               <% end %>
@@ -26,4 +27,5 @@
       </tbody>
     </table>
   </div>
+  <% end %>
 <% end %>
